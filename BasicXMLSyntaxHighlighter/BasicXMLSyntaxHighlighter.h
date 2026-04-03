@@ -32,6 +32,7 @@ THE SOFTWARE.
 #ifndef BASIC_XML_SYNTAX_HIGHLIGHTER_H
 #define BASIC_XML_SYNTAX_HIGHLIGHTER_H
 
+#include <QRegularExpression>
 #include <QSyntaxHighlighter>
 #include <QTextEdit>
 
@@ -46,7 +47,7 @@ protected:
 		
 private:
     void highlightByRegex(const QTextCharFormat & format,
-                          const QRegExp & regex, const QString & text);
+                          const QRegularExpression & regex, const QString & text);
 
     void setRegexes();
     void setFormats();
@@ -58,11 +59,11 @@ protected:
     QTextCharFormat     m_xmlValueFormat;
     QTextCharFormat     m_xmlCommentFormat;
 
-    QList<QRegExp>      m_xmlKeywordRegexes;
-    QRegExp             m_xmlElementRegex;
-    QRegExp             m_xmlAttributeRegex;
-    QRegExp             m_xmlValueRegex;
-    QRegExp             m_xmlCommentRegex;
+    QList<QRegularExpression>   m_xmlKeywordRegexes;
+    QRegularExpression          m_xmlElementRegex;
+    QRegularExpression          m_xmlAttributeRegex;
+    QRegularExpression          m_xmlValueRegex;
+    QRegularExpression          m_xmlCommentRegex;
 };
 
 #endif // BASIC_XML_SYNTAX_HIGHLIGHTER_H

@@ -22,14 +22,14 @@ CustomTreeWidget::CustomTreeWidget(QWidget *parent)
 
 void CustomTreeWidget::dropEvent(QDropEvent * event)
 {
-    QModelIndex droppedIndex = indexAt( event->pos() );
+    QModelIndex droppedIndex = indexAt(event->position().toPoint());
 
     if( !droppedIndex.isValid() )
         return;
 
     QTreeWidget::dropEvent(event);
 
-    QTreeWidgetItem *itemMoved = itemAt(event->pos());
+    QTreeWidgetItem *itemMoved = itemAt(event->position().toPoint());
 
     // If the item was dropped in top level item (project), it is moved to the bottom
     if(itemMoved == this->topLevelItem(0)){
@@ -40,7 +40,7 @@ void CustomTreeWidget::dropEvent(QDropEvent * event)
     setCurrentItem(itemMoved);
 
     // Signal that the item has changed
-    itemChanged(itemAt(event->pos()),0);
+    itemChanged(itemAt(event->position().toPoint()),0);
 }
 
 /**

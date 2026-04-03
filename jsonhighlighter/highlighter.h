@@ -1,6 +1,7 @@
 #ifndef HIGHLIGHTER_H
 #define HIGHLIGHTER_H
 
+#include <QRegularExpression>
 #include <QSyntaxHighlighter>
 #include <QTextCharFormat>
 
@@ -15,7 +16,7 @@ public:
 protected:
      struct HighlightingRule
      {
-         QRegExp pattern;
+         QRegularExpression pattern;
          QTextCharFormat format;
      };
      QVector<HighlightingRule> rules;
